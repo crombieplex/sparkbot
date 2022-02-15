@@ -26,7 +26,7 @@ module.exports = (message) => {
             return
         }
 
-        let results = characterList.map(x => `${x.name} [${x.gearscore}] - ${x.primaryWeapon}/${x.secondaryWeapon} - ${x.weight} Armor`)
+        let results = characterList.map(x => `${x.name} [${x.gearscore}] - ${x.primaryWeapon}/${x.secondaryWeapon} - ${x.dps}`)
         if (results.length == 0) {
             message.author.send(`No results found for query.`)
         } else {

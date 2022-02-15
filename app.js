@@ -41,7 +41,7 @@ const enhanceUserObject = (user, next) => {
 
 client.once('ready', () => {
     client.user.setActivity("New World", { type: "PLAYING" })
-    logger.info('SparkBot has started.')
+    logger.info('WarBot has started.')
 })
 
 client.on('messageCreate', (message) => {

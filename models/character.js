@@ -3,7 +3,7 @@ const logger = require('../lib/logger')
 const { MessageEmbed } = require('discord.js')
 
 module.exports = class Character {
-    constructor(id, name = null, company = null, level = null, gearscore = null, primaryWeapon = null, secondaryWeapon = null, weight = null, notes = null) {
+    constructor(id, name = null, company = null, level = null, gearscore = null, primaryWeapon = null, secondaryWeapon = null, weight = null, dps = null, notes = null) {
         this.id = id
         this._name = name
         this._company = company
@@ -12,6 +12,7 @@ module.exports = class Character {
         this._primaryWeapon = primaryWeapon
         this._secondaryWeapon = secondaryWeapon
         this._weight = weight
+        this._dps = dps
         this._notes = notes
     }
 
@@ -41,6 +42,10 @@ module.exports = class Character {
 
     get weight() {
         return this._weight
+    }
+
+    get dps() {
+        return this._dps
     }
 
     get notes() {
@@ -98,13 +103,13 @@ module.exports = class Character {
         let valid = true
         if (!Number.isInteger(gearscore)) {
             valid = false
-        } else if (gearscore < 1 || gearscore > 600) {
+        } else if (gearscore < 1 || gearscore > 625) {
             valid = false
         }
 
         if (!valid) {
             logger.warn(`Rejected input "gearscore" attribute value "${gearscore}" for user ${this.id}.`)
-            throw "Your gearscore has to be an integer between 1 and 600, inclusive. Try again."
+            throw "Your gearscore has to be an integer between 1 and 625, inclusive. Try again."
         }
         this._gearscore = gearscore
         characters.setAttribute(this.id, "gearscore", this.gearscore)
@@ -216,6 +221,16 @@ module.exports = class Character {
         characters.setAttribute(this.id, "weight", this.weight)
     }
 
+    set dps(dps) {
+        if (dps != "tank" && dps != "dps" && dps != "ranged" && dps != "healer") {
+            logger.warn(`Rejected input "dps" attribute value "${dps}" for user ${this.id}.`)
+            throw 'Whatever you said was not one of the options I listed. Again, your options are "tank", "dps", "ranged" or "healer".'
+
+        }
+        this._dps = dps.charAt(0).toUpperCase() + dps.slice(1)
+        characters.setAttribute(this.id, "dps", this.dps)
+    }
+
     set notes(notes) {
         if (notes.length > 256) {
             logger.warn(`Rejected input "notes" attribute value "${notes}" for user ${this.id}.`)
@@ -250,6 +265,7 @@ module.exports = class Character {
         embed.addField("Weapon 1", this._primaryWeapon || "?", false)
         embed.addField("Weapon 2", this._secondaryWeapon || "?", false)
         embed.addField("Weight", this._weight || "?", false)
+        embed.addField("DPS", this._dps || "?", false)
         if (this._notes) {
             embed.addField("Notes", this._notes, false)
         }
@@ -266,6 +282,7 @@ module.exports = class Character {
             value.primaryWeapon,
             value.secondaryWeapon,
             value.weight,
+            value.dps,
             value.notes)
         return character
     }
