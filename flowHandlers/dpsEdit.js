@@ -4,7 +4,7 @@ const menuFactory = require('../lib/menuFactory')
 module.exports = (message) => {
     let dps = message.content.toLowerCase()
     try {
-        message.author.character.dpst = dps
+        message.author.character.dps = dps
     } catch (ex) {
         messenger.send(message.author, ex)
         return
