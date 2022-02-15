@@ -52,7 +52,6 @@ const sendUpdate = () => {
         let sheets = google.sheets({ version: "v4", auth: auth })
         sheets.spreadsheets.values.update({
             spreadsheetId: spreadsheetId,
-            range: `${spreadsheetTabName}!A:I`,
             valueInputOption: 'USER_ENTERED',
             resource: {
                 values: buildValueArray(queuedObj)
