@@ -11,5 +11,5 @@ module.exports = (message) => {
 
     messenger.send(message.author, `I'll mark down that you're in ${message.author.character.dps} armor. Anything else you want people to know about you? You can just say "none", too.`)
 
-    message.author.flow.state = 'idle'
+    message.author.flow.state = 'noteNew'
 }
