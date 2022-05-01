@@ -1,4 +1,5 @@
 const characters = require('../data/characters')
+const gatheringcharacters = require('../data/characters')
 const logger = require('../lib/logger')
 const { MessageEmbed } = require('discord.js')
 
