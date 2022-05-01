@@ -174,14 +174,4 @@ module.exports = class GatheringCharacter {
         return embed
     }
 
-    static fromJson(key, value) {
-        let character = new Character(
-            key,
-            value.mining,
-            value.skinning,
-            value.fishing,
-            value.logging,
-            value.harvesting)
-        return character
-    }
 }
