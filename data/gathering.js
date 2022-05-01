@@ -1,4 +1,4 @@
-const Character = require('../models/character')
+const Character = require('../models/gatheringcharacter')
 const lockfile = require('proper-lockfile')
 const fs = require('fs')
 const sheets = require('./sheets')

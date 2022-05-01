@@ -40,7 +40,7 @@ const enhanceUserObject = (user, next) => {
 }
 
 client.once('ready', () => {
-    client.user.setActivity("New World", { type: "Message me 'hello'" })
+    client.user.setActivity("New World", { type: "PLAYING" })
     logger.info('WarBot has started.')
 })
 

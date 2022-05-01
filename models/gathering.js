@@ -1,9 +1,8 @@
-const characters = require('../data/characters')
-const gatheringcharacters = require('../data/characters')
+const gathering = require('../data/gathering')
 const logger = require('../lib/logger')
 const { MessageEmbed } = require('discord.js')
 
-module.exports = class GatheringCharacter {
+module.exports = class Gathering {
     constructor(id, mining = null, skinning = null, fishing = null, logging = null, harvesting = null) {
         this.id = id
         this._mining = mining
@@ -46,7 +45,7 @@ module.exports = class GatheringCharacter {
             throw "Your mining has to be an integer between 1 and 600, inclusive. Try again."
         }
         this._mining = mining
-        characters.setAttribute(this.id, "mining", this.mining)
+        gathering.setAttribute(this.id, "mining", this.mining)
     }
 
     set skinning(skinning) {
@@ -62,7 +61,7 @@ module.exports = class GatheringCharacter {
             throw "Your skinning has to be an integer between 1 and 600, inclusive. Try again."
         }
         this._skinning = skinning
-        characters.setAttribute(this.id, "skinning", this.skinning)
+        gathering.setAttribute(this.id, "skinning", this.skinning)
     }
 
     set fishing(fishing) {
@@ -78,7 +77,7 @@ module.exports = class GatheringCharacter {
             throw "Your fishing has to be an integer between 1 and 600, inclusive. Try again."
         }
         this._fishing = fishing
-        characters.setAttribute(this.id, "fishing", this.fishing)
+        gathering.setAttribute(this.id, "fishing", this.fishing)
     }
 
     set logging(logging) {
@@ -94,7 +93,7 @@ module.exports = class GatheringCharacter {
             throw "Your logging has to be an integer between 1 and 600, inclusive. Try again."
         }
         this._logging = logging
-        characters.setAttribute(this.id, "logging", this.logging)
+        gathering.setAttribute(this.id, "logging", this.logging)
     }
 
     set harvesting(harvesting) {
@@ -110,7 +109,7 @@ module.exports = class GatheringCharacter {
             throw "Your harvesting has to be an integer between 1 and 600, inclusive. Try again."
         }
         this._harvesting = harvesting
-        characters.setAttribute(this.id, "harvesting", this.harvesting)
+        gathering.setAttribute(this.id, "harvesting", this.harvesting)
     }
 
     get embed() {
@@ -174,4 +173,14 @@ module.exports = class GatheringCharacter {
         return embed
     }
 
+    static fromJson(key, value) {
+        let character = new Character(
+            key,
+            value.mining,
+            value.skinning,
+            value.fishing,
+            value.logging,
+            value.harvesting)
+        return character
+    }
 }
