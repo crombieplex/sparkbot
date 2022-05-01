@@ -2,7 +2,7 @@ const characters = require('../data/characters')
 const logger = require('../lib/logger')
 const { MessageEmbed } = require('discord.js')
 
-module.exports = class gatheringCharacter {
+module.exports = class GatheringCharacter {
     constructor(id, mining = null, skinning = null, fishing = null, logging = null, harvesting = null) {
         this.id = id
         this._mining = mining
@@ -115,38 +115,72 @@ module.exports = class gatheringCharacter {
     get embed() {
         let embed = new MessageEmbed()
             .setTitle(this._name).setColor("#DAA520")
-        if (this._mining && this._mining > 0) {
+        if (this._mining && this._mining > 200) {
             embed.addField("Mining", "" + this._mining, true)
         } else {
-            embed.addField("Mining", "None", true)
+            embed.addField("Mining", "0", true)
         }
-        if (this._gearscore && this._gearscore > 0) {
-            embed.addField("Gearscore", "" + this._gearscore, true)
+        if (this._mining && this._mining < 200) {
+            embed.addField("Aptitude", "" + this._gearscore - 200, true)
         } else {
-            embed.addField("Gearscore", "?", true)
+            embed.addField("Aptitude", "0", true)
         }
-        embed.addField("Weapon 1", this._primaryWeapon || "?", false)
-        embed.addField("Weapon 2", this._secondaryWeapon || "?", false)
-        embed.addField("Weight", this._weight || "?", false)
-        embed.addField("DPS", this._dps || "?", false)
-        if (this._notes) {
-            embed.addField("Notes", this._notes, false)
+
+        if (this._skinning && this._skinning > 200) {
+            embed.addField("Skinning", "" + this._skinning, true)
+        } else {
+            embed.addField("Skinning", "0", true)
         }
+        if (this._skinning && this._skinning < 200) {
+            embed.addField("Aptitude", "" + this._skinning - 200, true)
+        } else {
+            embed.addField("Aptitude", "0", true)
+        }
+
+        if (this._fishing && this._fishing > 200) {
+            embed.addField("Fishing", "" + this._fishing, true)
+        } else {
+            embed.addField("Fishing", "0", true)
+        }
+        if (this._fishing && this._fishing < 200) {
+            embed.addField("Aptitude", "" + this._fishing - 200, true)
+        } else {
+            embed.addField("Aptitude", "0", true)
+        }
+
+        if (this._logging && this._logging > 200) {
+            embed.addField("Logging", "" + this._logging, true)
+        } else {
+            embed.addField("Logging", "0", true)
+        }
+        if (this._logging && this._logging < 200) {
+            embed.addField("Aptitude", "" + this._logging - 200, true)
+        } else {
+            embed.addField("Aptitude", "0", true)
+        }
+
+        if (this._harvesting && this._harvesting > 200) {
+            embed.addField("Harvesting", "" + this._harvesting, true)
+        } else {
+            embed.addField("Harvesting", "0", true)
+        }
+        if (this._harvesting && this._harvesting < 200) {
+            embed.addField("Aptitude", "" + this._harvesting - 200, true)
+        } else {
+            embed.addField("Aptitude", "0", true)
+        }
+
         return embed
     }
 
     static fromJson(key, value) {
         let character = new Character(
             key,
-            value.name,
-            value.company,
-            value.level,
-            value.gearscore,
-            value.primaryWeapon,
-            value.secondaryWeapon,
-            value.weight,
-            value.dps,
-            value.notes)
+            value.mining,
+            value.skinning,
+            value.fishing,
+            value.logging,
+            value.harvesting)
         return character
     }
 }
