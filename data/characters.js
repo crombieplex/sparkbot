@@ -41,7 +41,7 @@ const getOrAdd = (id, next) => {
                 }
                 if (obj[id]) {
                     release()
-                    next(null, Character.fromJson(id, obj[id]))
+                    next(null, Character.fromJson(id, obj[id]), GatheringCharacter.fromJson(id, obj[id]))
                     return
                 }
                 obj[id] = newCharacter
@@ -79,7 +79,7 @@ const setAttribute = (id, attributeName, attributeValue, next = () => { }) => {
                 _set(obj, (err) => {
                     release()
                     logger.info(`Set attribute "${attributeName}" to "${attributeValue}" for user ${id}.`)
-                    next(err, Character.fromJson(id, obj[id]))
+                    next(err, Character.fromJson(id, obj[id]), GatheringCharacter.fromJson(id, obj[id]))
                 })
             })
         })
