@@ -1,7 +1,7 @@
 const messenger = require('../lib/messenger')
 
 module.exports = (message) => {
-    let faction = message.content
+    let faction = message.content.toLowerCase()
     try {
         message.author.character.faction = faction
     } catch (ex) {
@@ -9,11 +9,7 @@ module.exports = (message) => {
         return
     }
 
-    if (!message.author.character.faction) {
-        messenger.send(message.author, `Welcome to the Sorting Ceremony!!!!!This yearly ritual....Oh wait, you are just a muggle.... Whats your faction then?`)
-    } else {
-        messenger.send(message.author, `Great to see another member of ${faction}! What is your character\'s current faction?`)
-    }
+    messenger.send(message.author, `I'll mark down that you're in ${message.author.character.faction}. Anything else you want people to know about you? You can just say "none", too.`)
 
-    message.author.flow.state = 'notesNew'
+    message.author.flow.state = 'noteNew'
 }
