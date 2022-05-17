@@ -1,4 +1,5 @@
 const characters = require('./data/characters')
+const crafting = require('./data/crafting')
 const flows = require('./data/flows')
 const grants = require('./data/grants')
 const wars = require('./data/wars')

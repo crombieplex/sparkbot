@@ -1,8 +1,8 @@
-const characters = require('../data/characters')
+const crafting = require('../data/crafting')
 const logger = require('../lib/logger')
 const { MessageEmbed } = require('discord.js')
 
-module.exports = class Character {
+module.exports = class Crafting {
     constructor(id, name = null, weaponsmithing = null, weaponsmithingAptitude = null, armoring = null, armoringAptitude = null, engineering = null, engineeringAptitude = null, jewelcrafting = null, jewelcraftingAptitude= null, arcana = null, arcanaAptitude = null, cooking = null, cookingAptitude = null, furnishing = null, furnishingAptitude = null) {
         this.id = id
         this._name = name
@@ -399,7 +399,7 @@ module.exports = class Character {
     }
 
     static fromJson(key, value) {
-        let character = new Character(
+        let crafting = new Crafting(
             key,
             value.name,
             value.weaponsmithing,
@@ -416,6 +416,6 @@ module.exports = class Character {
             value.cookingAptitude,
             value.furnishing,
             value.furnishingAptitude)
-        return character
+        return crafting
     }
 }
