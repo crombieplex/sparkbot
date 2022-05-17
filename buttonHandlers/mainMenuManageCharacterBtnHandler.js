@@ -5,5 +5,5 @@ module.exports = (interaction) => {
   if (!interaction.user.grants.company) {
       return;
   }
-    messenger.sendMenu(interaction.user, menuFactory.getMainCharacterMenu(interaction.user))
+    messenger.sendMenu(interaction.user, menuFactory.getMainCharacterMenu(interaction.user.crafting))
 }
