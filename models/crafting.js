@@ -324,10 +324,12 @@ module.exports = class Crafting {
     get embed() {
         let embed = new MessageEmbed()
             .setTitle(this._name).setColor("#DAA520")
-        if (this._weaponsmithing && this._weaponsmithing > 0) {
+        if (this._weaponsmithing && this._weaponsmithing > 0 && this._weaponsmithingAptitude && this._weaponsmithingAptitude > 0) {
             embed.addField("weaponsmithing", "" + this._weaponsmithing, true)
+            embed.addField("Aptitude", "" + this._weaponsmithingAptitude, true)
         } else {
             embed.addField("weaponsmithing", "?", true)
+            embed.addField("Aptitude", "?", true)
         }
         if (this._weaponsmithingAptitude && this._weaponsmithingAptitude > 0) {
             embed.addField("Aptitude", "" + this._weaponsmithingAptitude, true)
