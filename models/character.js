@@ -248,7 +248,7 @@ module.exports = class Character {
             throw 'Whatever you said was not one of the options I listed. Again, your options are "Covenant", "Marauders", "Syndicate".'
 
         }
-        this._faction = faction.charAt(0).toUpperCase() + dps.slice(1)
+        this._faction = faction.charAt(0).toUpperCase() + faction.slice(1)
         characters.setAttribute(this.id, "faction", this.faction)
     }
 
