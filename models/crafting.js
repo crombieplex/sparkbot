@@ -329,14 +329,14 @@ module.exports = class Crafting {
             embed.addField("Aptitude", "" + this._weaponsmithingAptitude, true)
         } else {
             embed.addField("Weaponsmithing", "?", true)
-            embed.addField("Aptitude", "?", false)
+            embed.addField("Aptitude", "?", true)
         }
         if (this._armoring && this._armoring > 0 && this._armoringAptitude && this._armoringAptitude > 0) {
             embed.addField("Armoring", "" + this._armoring, true)
             embed.addField("Aptitude", "" + this._armoringAptitude, true)
         } else {
             embed.addField("Armoring", "?", true)
-            embed.addField("Aptitude", "?", false)
+            embed.addField("Aptitude", "?", "\n", true)
         }
         if (this._engineering && this._engineering > 0 && this._engineeringAptitude && this._engineeringAptitude > 0) {
             embed.addField("Engineering", "" + this._engineering, true)
