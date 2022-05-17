@@ -39,6 +39,7 @@ const enhanceUserObject = (user, next) => {
                     }
                     user.wars = wars
                     next(null, user)
+                    })
                 })
             })
         })
