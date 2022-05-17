@@ -275,7 +275,7 @@ module.exports = class Character {
         embed.addField("Company", this._company || "None", true)
         embed.addField("Faction", this._faction || "None", true)
         if (this._level && this._level > 0) {
-            embed.addField("Level", "" + this._level, true)
+            embed.addField("Level", "" + this._level, false)
         } else {
             embed.addField("Level", "?", true)
         }
