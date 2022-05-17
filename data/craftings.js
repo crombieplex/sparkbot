@@ -5,7 +5,7 @@ const tradeSheets = require('./tradesheets')
 const logger = require('../lib/logger')
 const filterUtil = require('../lib/filter')
 
-const file = "./data/characterData.json"
+const file = "./data/characterDataTrade.json"
 let cache = null
 
 const list = (next) => {
