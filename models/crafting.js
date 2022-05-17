@@ -1,0 +1,421 @@
+const characters = require('../data/characters')
+const logger = require('../lib/logger')
+const { MessageEmbed } = require('discord.js')
+
+module.exports = class Character {
+    constructor(id, name = null, weaponsmithing = null, weaponsmithingAptitude = null, armoring = null, armoringAptitude = null, engineering = null, engineeringAptitude = null, jewelcrafting = null, jewelcraftingAptitude= null, arcana = null, arcanaAptitude = null, cooking = null, cookingAptitude = null, furnishing = null, furnishingAptitude = null) {
+        this.id = id
+        this._name = name
+        this._weaponsmithing = weaponsmithing
+        this._weaponsmithingAptitude = weaponsmithingAptitude
+        this._armoring = armoring
+        this._armoringAptitude = armoringAptitude
+        this._engineering = engineering
+        this._engineeringAptitude = engineeringAptitude
+        this._jewelcrafting = jewelcrafting
+        this._jewelcraftingAptitude = jewelcraftingAptitude
+        this._arcana = arcana
+        this._arcanaAptitude = arcanaAptitude
+        this._cooking = cooking
+        this._cookingAptitude = cookingAptitude
+        this._furnishing = furnishing
+        this._furnishingAptitude = furnishingAptitude
+    }
+
+    get name() {
+        return this._name
+    }
+
+    get weaponsmithing() {
+        return this._weaponsmithing
+    }
+
+    get weaponsmithingAptitude() {
+        return this._weaponsmithingAptitude
+    }
+
+    get armoring() {
+        return this._armoring
+    }
+
+    get armoringAptitude() {
+        return this._armoringAptitude
+    }
+
+    get engineering() {
+        return this._engineering
+    }
+
+    get engineeringAptitude() {
+        return this._engineeringAptitude
+    }
+
+    get jewelcrafting() {
+        return this._jewelcrafting
+    }
+
+    get jewelcraftingAptitude() {
+        return this._jewelcraftingAptitude
+    }
+
+    get arcana() {
+        return this._arcana
+    }
+
+    get arcanaAptitude() {
+        return this._arcanaAptitude
+    }
+
+    get cooking() {
+        return this._cooking
+    }
+
+    get cookingAptitude() {
+        return this._cookingAptitude
+    }
+
+    get furnishing() {
+        return this._furnishing
+    }
+
+    get furnishingAptitude() {
+        return this._furnishingAptitude
+    }
+
+    set name(name) {
+        if (name.length > 256) {
+            logger.warn(`Rejected input "name" attribute value "${name}" for user ${this.id}.`)
+            throw `Whoa, that name is way too long. Try something shorter. Again, it should be your character's in-game name.`
+        }
+
+        if (name.startsWith("=")) {
+            logger.warn(`Rejected input "name" attribute value "${name}" for user ${this.id}.`)
+            throw `It looks like you're trying to do some formula injection. Try again without the equal sign.`
+        }
+        this._name = name
+        characters.setAttribute(this.id, "name", this.name)
+    }
+
+    set weaponsmithing(weaponsmithing) {
+        let valid = true
+        if (!Number.isInteger(weaponsmithing)) {
+            valid = false
+        } else if (weaponsmithing < 1 || weaponsmithing > 200) {
+            valid = false
+        }
+
+        if (!valid) {
+            logger.warn(`Rejected input "weaponsmithing" attribute value "${weaponsmithing}" for user ${this.id}.`)
+            throw "Your level has to be an integer between 1 and 200, inclusive. Try again."
+        }
+        this._weaponsmithing = weaponsmithing
+        characters.setAttribute(this.id, "weaponsmithing", this.weaponsmithing)
+    }
+
+    set weaponsmithingAptitude(weaponsmithingAptitude) {
+        let valid = true
+        if (!Number.isInteger(weaponsmithingAptitude)) {
+            valid = false
+        } else if (weaponsmithingAptitude < 0 || weaponsmithingAptitude > 500) {
+            valid = false
+        }
+
+        if (!valid) {
+            logger.warn(`Rejected input "weaponsmithing aptitude" attribute value "${weaponsmithingAptitude}" for user ${this.id}.`)
+            throw "Your level has to be an integer between 0 and 500, inclusive. Try again."
+        }
+        this._weaponsmithingAptitude = weaponsmithingAptitude
+        characters.setAttribute(this.id, "weaponsmithingAptitude", this.weaponsmithingAptitude)
+    }
+
+    set armoring(armoring) {
+        let valid = true
+        if (!Number.isInteger(armoring)) {
+            valid = false
+        } else if (armoring < 1 || armoring > 200) {
+            valid = false
+        }
+
+        if (!valid) {
+            logger.warn(`Rejected input "armoring" attribute value "${armoring}" for user ${this.id}.`)
+            throw "Your level has to be an integer between 1 and 200, inclusive. Try again."
+        }
+        this._armoring = armoring
+        characters.setAttribute(this.id, "armoring", this.armoring)
+    }
+
+    set armoringAptitude(armoringAptitude) {
+        let valid = true
+        if (!Number.isInteger(armoringAptitude)) {
+            valid = false
+        } else if (armoringAptitude < 0 || armoringAptitude > 500) {
+            valid = false
+        }
+
+        if (!valid) {
+            logger.warn(`Rejected input "armoring aptitude" attribute value "${armoringAptitude}" for user ${this.id}.`)
+            throw "Your level has to be an integer between 0 and 500, inclusive. Try again."
+        }
+        this._armoringAptitude = armoringAptitude
+        characters.setAttribute(this.id, "armoringAptitude", this.armoringAptitude)
+    }
+
+    set engineering(engineering) {
+        let valid = true
+        if (!Number.isInteger(engineering)) {
+            valid = false
+        } else if (engineering < 1 || engineering > 200) {
+            valid = false
+        }
+
+        if (!valid) {
+            logger.warn(`Rejected input "engineering" attribute value "${engineering}" for user ${this.id}.`)
+            throw "Your level has to be an integer between 1 and 200, inclusive. Try again."
+        }
+        this._engineering = engineering
+        characters.setAttribute(this.id, "engineering", this.engineering)
+    }
+
+    set engineeringAptitude(engineeringAptitude) {
+        let valid = true
+        if (!Number.isInteger(engineeringAptitude)) {
+            valid = false
+        } else if (engineeringAptitude < 0 || engineeringAptitude > 500) {
+            valid = false
+        }
+
+        if (!valid) {
+            logger.warn(`Rejected input "engineering aptitude" attribute value "${engineeringAptitude}" for user ${this.id}.`)
+            throw "Your level has to be an integer between 0 and 500, inclusive. Try again."
+        }
+        this._engineeringAptitude = engineeringAptitude
+        characters.setAttribute(this.id, "engineeringAptitude", this.engineeringAptitude)
+    }
+
+    set jewelcrafting(jewelcrafting) {
+        let valid = true
+        if (!Number.isInteger(jewelcrafting)) {
+            valid = false
+        } else if (jewelcrafting < 1 || jewelcrafting > 200) {
+            valid = false
+        }
+
+        if (!valid) {
+            logger.warn(`Rejected input "jewelcrafting" attribute value "${jewelcrafting}" for user ${this.id}.`)
+            throw "Your level has to be an integer between 1 and 200, inclusive. Try again."
+        }
+        this._jewelcrafting = jewelcrafting
+        characters.setAttribute(this.id, "jewelcrafting", this.jewelcrafting)
+    }
+
+    set jewelcraftingAptitude(jewelcraftingAptitude) {
+        let valid = true
+        if (!Number.isInteger(jewelcraftingAptitude)) {
+            valid = false
+        } else if (jewelcraftingAptitude < 0 || jewelcraftingAptitude > 500) {
+            valid = false
+        }
+
+        if (!valid) {
+            logger.warn(`Rejected input "jewelcrafting aptitude" attribute value "${jewelcraftingAptitude}" for user ${this.id}.`)
+            throw "Your level has to be an integer between 0 and 500, inclusive. Try again."
+        }
+        this._jewelcraftingAptitude = jewelcraftingAptitude
+        characters.setAttribute(this.id, "jewelcraftingAptitude", this.jewelcraftingAptitude)
+    }
+
+    set arcana(arcana) {
+        let valid = true
+        if (!Number.isInteger(arcana)) {
+            valid = false
+        } else if (arcana < 1 || arcana > 200) {
+            valid = false
+        }
+
+        if (!valid) {
+            logger.warn(`Rejected input "arcana" attribute value "${arcana}" for user ${this.id}.`)
+            throw "Your level has to be an integer between 1 and 200, inclusive. Try again."
+        }
+        this._arcana = arcana
+        characters.setAttribute(this.id, "arcana", this.arcana)
+    }
+
+    set arcanaAptitude(arcanaAptitude) {
+        let valid = true
+        if (!Number.isInteger(arcanaAptitude)) {
+            valid = false
+        } else if (arcanaAptitude < 0 || arcanaAptitude > 500) {
+            valid = false
+        }
+
+        if (!valid) {
+            logger.warn(`Rejected input "arcana aptitude" attribute value "${arcanaAptitude}" for user ${this.id}.`)
+            throw "Your level has to be an integer between 0 and 500, inclusive. Try again."
+        }
+        this._arcanaAptitude = arcanaAptitude
+        characters.setAttribute(this.id, "arcanaAptitude", this.arcanaAptitude)
+    }
+
+    set cooking(cooking) {
+        let valid = true
+        if (!Number.isInteger(cooking)) {
+            valid = false
+        } else if (cooking < 1 || cooking > 200) {
+            valid = false
+        }
+
+        if (!valid) {
+            logger.warn(`Rejected input "cooking" attribute value "${cooking}" for user ${this.id}.`)
+            throw "Your level has to be an integer between 1 and 200, inclusive. Try again."
+        }
+        this._cooking = cooking
+        characters.setAttribute(this.id, "cooking", this.cooking)
+    }
+
+    set cookingAptitude(cookingAptitude) {
+        let valid = true
+        if (!Number.isInteger(cookingAptitude)) {
+            valid = false
+        } else if (cookingAptitude < 0 || cookingAptitude > 500) {
+            valid = false
+        }
+
+        if (!valid) {
+            logger.warn(`Rejected input "cooking aptitude" attribute value "${cookingAptitude}" for user ${this.id}.`)
+            throw "Your level has to be an integer between 0 and 500, inclusive. Try again."
+        }
+        this._cookingAptitude = cookingAptitude
+        characters.setAttribute(this.id, "cookingAptitude", this.cookingAptitude)
+    }
+
+    set furnishing(furnishing) {
+        let valid = true
+        if (!Number.isInteger(furnishing)) {
+            valid = false
+        } else if (furnishing < 1 || furnishing > 200) {
+            valid = false
+        }
+
+        if (!valid) {
+            logger.warn(`Rejected input "furnishing" attribute value "${furnishing}" for user ${this.id}.`)
+            throw "Your level has to be an integer between 1 and 200, inclusive. Try again."
+        }
+        this._furnishing = furnishing
+        characters.setAttribute(this.id, "furnishing", this.furnishing)
+    }
+
+    set furnishingAptitude(furnishingAptitude) {
+        let valid = true
+        if (!Number.isInteger(furnishingAptitude)) {
+            valid = false
+        } else if (furnishingAptitude < 0 || furnishingAptitude > 500) {
+            valid = false
+        }
+
+        if (!valid) {
+            logger.warn(`Rejected input "furnishing aptitude" attribute value "${furnishingAptitude}" for user ${this.id}.`)
+            throw "Your level has to be an integer between 0 and 500, inclusive. Try again."
+        }
+        this._furnishingAptitude = furnishingAptitude
+        characters.setAttribute(this.id, "furnishingAptitude", this.furnishingAptitude)
+    }
+
+
+    get embed() {
+        let embed = new MessageEmbed()
+            .setTitle(this._name).setColor("#DAA520")
+        if (this._weaponsmithing && this._weaponsmithing > 0) {
+            embed.addField("weaponsmithing", "" + this._weaponsmithing, true)
+        } else {
+            embed.addField("weaponsmithing", "?", true)
+        }
+        if (this._weaponsmithingAptitude && this._weaponsmithingAptitude > 0) {
+            embed.addField("Aptitude", "" + this._weaponsmithingAptitude, true)
+        } else {
+            embed.addField("Aptitude", "?", true)
+        }
+        if (this._armoring && this._armoring > 0) {
+            embed.addField("armoring", "" + this._armoring, true)
+        } else {
+            embed.addField("armoring", "?", true)
+        }
+        if (this._armoringAptitude && this._armoringAptitude > 0) {
+            embed.addField("Aptitude", "" + this._armoringAptitude, true)
+        } else {
+            embed.addField("Aptitude", "?", true)
+        }
+        if (this._engineering && this._engineering > 0) {
+            embed.addField("engineering", "" + this._engineering, true)
+        } else {
+            embed.addField("engineering", "?", true)
+        }
+        if (this._engineeringAptitude && this._engineeringAptitude > 0) {
+            embed.addField("Aptitude", "" + this._engineeringAptitude, true)
+        } else {
+            embed.addField("Aptitude", "?", true)
+        }
+        if (this._jewelcrafting && this._jewelcrafting > 0) {
+            embed.addField("jewelcrafting", "" + this._jewelcrafting, true)
+        } else {
+            embed.addField("jewelcrafting", "?", true)
+        }
+        if (this._jewelcraftingAptitude && this._jewelcraftingAptitude > 0) {
+            embed.addField("Aptitude", "" + this._jewelcraftingAptitude, true)
+        } else {
+            embed.addField("Aptitude", "?", true)
+        }
+        if (this._arcana && this._arcana > 0) {
+            embed.addField("arcana", "" + this._arcana, true)
+        } else {
+            embed.addField("arcana", "?", true)
+        }
+        if (this._arcanaAptitude && this._arcanaAptitude > 0) {
+            embed.addField("Aptitude", "" + this._arcanaAptitude, true)
+        } else {
+            embed.addField("Aptitude", "?", true)
+        }
+        if (this._cooking && this._cooking > 0) {
+            embed.addField("cooking", "" + this._cooking, true)
+        } else {
+            embed.addField("cooking", "?", true)
+        }
+        if (this._cookingAptitude && this._cookingAptitude > 0) {
+            embed.addField("Aptitude", "" + this._cookingAptitude, true)
+        } else {
+            embed.addField("Aptitude", "?", true)
+        }
+        if (this._furnishing && this._furnishing > 0) {
+            embed.addField("furnishing", "" + this._furnishing, true)
+        } else {
+            embed.addField("furnishing", "?", true)
+        }
+        if (this._furnishingAptitude && this._furnishingAptitude > 0) {
+            embed.addField("Aptitude", "" + this._furnishingAptitude, true)
+        } else {
+            embed.addField("Aptitude", "?", true)
+        }
+
+        return embed
+    }
+
+    static fromJson(key, value) {
+        let character = new Character(
+            key,
+            value.name,
+            value.weaponsmithing,
+            value.weaponsmithingAptitude,
+            value.armoring,
+            value.armoringAptitude,
+            value.engineering,
+            value.engineeringAptitude,
+            value.jewelcrafting,
+            value.jewelcraftingAptitude,
+            value.arcana,
+            value.arcanaAptitude,
+            value.cooking,
+            value.cookingAptitude,
+            value.furnishing,
+            value.furnishingAptitude)
+        return character
+    }
+}
