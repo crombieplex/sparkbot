@@ -329,49 +329,49 @@ module.exports = class Crafting {
             embed.addField("Aptitude", "" + this._weaponsmithingAptitude, true)
         } else {
             embed.addField("Weaponsmithing", "?", true)
-            embed.addField("Aptitude", "?", true)
+            embed.addField("Aptitude", "?<br/>", true)
         }
         if (this._armoring && this._armoring > 0 && this._armoringAptitude && this._armoringAptitude > 0) {
             embed.addField("Armoring", "" + this._armoring, true)
             embed.addField("Aptitude", "" + this._armoringAptitude, true)
         } else {
             embed.addField("Armoring", "?", true)
-            embed.addField("Aptitude", "?", true)
+            embed.addField("Aptitude", "?<br/>", true)
         }
         if (this._engineering && this._engineering > 0 && this._engineeringAptitude && this._engineeringAptitude > 0) {
             embed.addField("Engineering", "" + this._engineering, true)
             embed.addField("Aptitude", "" + this._engineeringAptitude, true)
         } else {
             embed.addField("Engineering", "?", true)
-            embed.addField("Aptitude", "?", true)
+            embed.addField("Aptitude", "?<br/>", true)
           }
         if (this._jewelcrafting && this._jewelcrafting > 0 && this._jewelcraftingAptitude && this._jewelcraftingAptitude > 0) {
             embed.addField("Jewelcrafting", "" + this._jewelcrafting, true)
             embed.addField("Aptitude", "" + this._jewelcraftingAptitude, true)
         } else {
             embed.addField("Jewelcrafting", "?", true)
-            embed.addField("Aptitude", "?", true)
+            embed.addField("Aptitude", "?<br/>", true)
         }
         if (this._arcana && this._arcana > 0 && this._arcanaAptitude && this._arcanaAptitude > 0) {
             embed.addField("Arcana", "" + this._arcana, true)
             embed.addField("Aptitude", "" + this._arcanaAptitude, true)
         } else {
             embed.addField("Arcana", "?", true)
-            embed.addField("Aptitude", "?", true)
+            embed.addField("Aptitude", "?<br/>", true)
         }
         if (this._cooking && this._cooking > 0 && this._cookingAptitude && this._cookingAptitude > 0) {
             embed.addField("Cooking", "" + this._cooking, true)
             embed.addField("Aptitude", "" + this._cookingAptitude, true)
         } else {
             embed.addField("Cooking", "?", true)
-            embed.addField("Aptitude", "?", true)
+            embed.addField("Aptitude", "?<br/>", true)
         }
         if (this._furnishing && this._furnishing > 0 && this._furnishingAptitude && this._furnishingAptitude > 0) {
             embed.addField("Furnishing", "" + this._furnishing, true)
             embed.addField("Aptitude", "" + this._furnishingAptitude, true)
         } else {
             embed.addField("Furnishing", "?", true)
-            embed.addField("Aptitude", "?", true)
+            embed.addField("Aptitude", "?<br/>", true)
         }
         return embed
     }
