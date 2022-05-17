@@ -130,13 +130,13 @@ const generateNewToken = (code, next = () => { }) => {
 }
 
 const buildValueArray = (obj) => {
-    let value = [["Discord ID", "Name", "Company", "Level", "Gearscore", "Weapon 1", "Weapon 2", "Weight", "DPS", "Notes"]]
+    let value = [["Discord ID", "Name", "Company", "Level", "Gearscore", "Weapon 1", "Weapon 2", "Weight", "DPS", "Faction", "Notes"]]
 
     let entries = Object.entries(obj).sort((a, b) => {
         return a[1].name.localeCompare(b[1].name);
     })
     for (const [k, v] of entries) {
-        value.push([k, v.name, v.company || " ", v.level || " ", v.gearscore || " ", v.primaryWeapon || " ", v.secondaryWeapon || " ", v.weight || " ", v.dps || " ", v.notes || " "])
+        value.push([k, v.name, v.company || " ", v.level || " ", v.gearscore || " ", v.primaryWeapon || " ", v.secondaryWeapon || " ", v.weight || " ", v.dps || " ", v.faction || " ", v.notes || " "])
     }
     return value
 }

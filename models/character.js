@@ -3,7 +3,7 @@ const logger = require('../lib/logger')
 const { MessageEmbed } = require('discord.js')
 
 module.exports = class Character {
-    constructor(id, name = null, company = null, level = null, gearscore = null, primaryWeapon = null, secondaryWeapon = null, weight = null, dps = null, notes = null) {
+    constructor(id, name = null, company = null, level = null, gearscore = null, primaryWeapon = null, secondaryWeapon = null, weight = null, faction = null, notes = null) {
         this.id = id
         this._name = name
         this._company = company
@@ -13,6 +13,7 @@ module.exports = class Character {
         this._secondaryWeapon = secondaryWeapon
         this._weight = weight
         this._dps = dps
+        this._faction = faction
         this._notes = notes
     }
 
@@ -46,6 +47,10 @@ module.exports = class Character {
 
     get dps() {
         return this._dps
+    }
+
+    get faction() {
+        return this._faction
     }
 
     get notes() {
@@ -237,6 +242,16 @@ module.exports = class Character {
         characters.setAttribute(this.id, "dps", this.dps)
     }
 
+    set faction(faction) {
+        if (faction != "Covenant" && faction != "Marauders" && faction != "Syndicate") {
+            logger.warn(`Rejected input "faction" attribute value "${faction}" for user ${this.id}.`)
+            throw 'Whatever you said was not one of the options I listed. Again, your options are "Covenant", "Marauders", "Syndicate".'
+
+        }
+        this._faction = faction.charAt(0).toUpperCase() + dps.slice(1)
+        characters.setAttribute(this.id, "faction", this.faction)
+    }
+
     set notes(notes) {
         if (notes.length > 256) {
             logger.warn(`Rejected input "notes" attribute value "${notes}" for user ${this.id}.`)
@@ -258,6 +273,7 @@ module.exports = class Character {
         let embed = new MessageEmbed()
             .setTitle(this._name).setColor("#DAA520")
         embed.addField("Company", this._company || "None", false)
+        embed.addField("Faction", this._faction || "None", false)
         if (this._level && this._level > 0) {
             embed.addField("Level", "" + this._level, true)
         } else {
@@ -289,6 +305,7 @@ module.exports = class Character {
             value.secondaryWeapon,
             value.weight,
             value.dps,
+            value.faction,
             value.notes)
         return character
     }
