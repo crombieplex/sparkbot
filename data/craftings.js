@@ -1,7 +1,7 @@
 const Crafting = require('../models/crafting')
 const lockfile = require('proper-lockfile')
 const fs = require('fs')
-const sheets = require('./sheets')
+const tradeSheets = require('./tradesheets')
 const logger = require('../lib/logger')
 const filterUtil = require('../lib/filter')
 
@@ -102,7 +102,7 @@ const _set = (obj, next) => {
         else cache = obj
         next(err)
     })
-    sheets.update(obj)
+    tradeSheets.update(obj)
 }
 
 module.exports.getOrAdd = getOrAdd
