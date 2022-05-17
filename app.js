@@ -1,5 +1,5 @@
 const characters = require('./data/characters')
-const crafting = require('./data/crafting')
+const craftings = require('./data/craftings')
 const flows = require('./data/flows')
 const grants = require('./data/grants')
 const wars = require('./data/wars')
@@ -18,6 +18,11 @@ const enhanceUserObject = (user, next) => {
             return next(`Failed to get character for id ${user.id}: ${err}`)
         }
         user.character = character
+        craftings.getOrAdd(user.id, (err, crafting) => {
+            if (err) {
+                return next(`Failed to get crafting for id ${user.id}: ${err}`)
+            }
+            user.crafting = crafting
         flows.getOrAdd(user.id, (err, flow) => {
             if (err) {
                 return next(`Failed to get flow for id ${user.id}: ${err}`)

@@ -1,4 +1,4 @@
-const crafting = require('../data/crafting')
+const craftings = require('../data/craftings')
 const logger = require('../lib/logger')
 const { MessageEmbed } = require('discord.js')
 
@@ -93,7 +93,7 @@ module.exports = class Crafting {
             throw `It looks like you're trying to do some formula injection. Try again without the equal sign.`
         }
         this._name = name
-        characters.setAttribute(this.id, "name", this.name)
+        craftings.setAttribute(this.id, "name", this.name)
     }
 
     set weaponsmithing(weaponsmithing) {
@@ -109,7 +109,7 @@ module.exports = class Crafting {
             throw "Your level has to be an integer between 1 and 200, inclusive. Try again."
         }
         this._weaponsmithing = weaponsmithing
-        characters.setAttribute(this.id, "weaponsmithing", this.weaponsmithing)
+        craftings.setAttribute(this.id, "weaponsmithing", this.weaponsmithing)
     }
 
     set weaponsmithingAptitude(weaponsmithingAptitude) {
@@ -125,7 +125,7 @@ module.exports = class Crafting {
             throw "Your level has to be an integer between 0 and 500, inclusive. Try again."
         }
         this._weaponsmithingAptitude = weaponsmithingAptitude
-        characters.setAttribute(this.id, "weaponsmithingAptitude", this.weaponsmithingAptitude)
+        craftings.setAttribute(this.id, "weaponsmithingAptitude", this.weaponsmithingAptitude)
     }
 
     set armoring(armoring) {
@@ -141,7 +141,7 @@ module.exports = class Crafting {
             throw "Your level has to be an integer between 1 and 200, inclusive. Try again."
         }
         this._armoring = armoring
-        characters.setAttribute(this.id, "armoring", this.armoring)
+        craftings.setAttribute(this.id, "armoring", this.armoring)
     }
 
     set armoringAptitude(armoringAptitude) {
@@ -157,7 +157,7 @@ module.exports = class Crafting {
             throw "Your level has to be an integer between 0 and 500, inclusive. Try again."
         }
         this._armoringAptitude = armoringAptitude
-        characters.setAttribute(this.id, "armoringAptitude", this.armoringAptitude)
+        craftings.setAttribute(this.id, "armoringAptitude", this.armoringAptitude)
     }
 
     set engineering(engineering) {
@@ -173,7 +173,7 @@ module.exports = class Crafting {
             throw "Your level has to be an integer between 1 and 200, inclusive. Try again."
         }
         this._engineering = engineering
-        characters.setAttribute(this.id, "engineering", this.engineering)
+        craftings.setAttribute(this.id, "engineering", this.engineering)
     }
 
     set engineeringAptitude(engineeringAptitude) {
@@ -189,7 +189,7 @@ module.exports = class Crafting {
             throw "Your level has to be an integer between 0 and 500, inclusive. Try again."
         }
         this._engineeringAptitude = engineeringAptitude
-        characters.setAttribute(this.id, "engineeringAptitude", this.engineeringAptitude)
+        craftings.setAttribute(this.id, "engineeringAptitude", this.engineeringAptitude)
     }
 
     set jewelcrafting(jewelcrafting) {
@@ -205,7 +205,7 @@ module.exports = class Crafting {
             throw "Your level has to be an integer between 1 and 200, inclusive. Try again."
         }
         this._jewelcrafting = jewelcrafting
-        characters.setAttribute(this.id, "jewelcrafting", this.jewelcrafting)
+        craftings.setAttribute(this.id, "jewelcrafting", this.jewelcrafting)
     }
 
     set jewelcraftingAptitude(jewelcraftingAptitude) {
@@ -221,7 +221,7 @@ module.exports = class Crafting {
             throw "Your level has to be an integer between 0 and 500, inclusive. Try again."
         }
         this._jewelcraftingAptitude = jewelcraftingAptitude
-        characters.setAttribute(this.id, "jewelcraftingAptitude", this.jewelcraftingAptitude)
+        craftings.setAttribute(this.id, "jewelcraftingAptitude", this.jewelcraftingAptitude)
     }
 
     set arcana(arcana) {
@@ -237,7 +237,7 @@ module.exports = class Crafting {
             throw "Your level has to be an integer between 1 and 200, inclusive. Try again."
         }
         this._arcana = arcana
-        characters.setAttribute(this.id, "arcana", this.arcana)
+        craftings.setAttribute(this.id, "arcana", this.arcana)
     }
 
     set arcanaAptitude(arcanaAptitude) {
@@ -253,7 +253,7 @@ module.exports = class Crafting {
             throw "Your level has to be an integer between 0 and 500, inclusive. Try again."
         }
         this._arcanaAptitude = arcanaAptitude
-        characters.setAttribute(this.id, "arcanaAptitude", this.arcanaAptitude)
+        craftings.setAttribute(this.id, "arcanaAptitude", this.arcanaAptitude)
     }
 
     set cooking(cooking) {
@@ -269,7 +269,7 @@ module.exports = class Crafting {
             throw "Your level has to be an integer between 1 and 200, inclusive. Try again."
         }
         this._cooking = cooking
-        characters.setAttribute(this.id, "cooking", this.cooking)
+        craftings.setAttribute(this.id, "cooking", this.cooking)
     }
 
     set cookingAptitude(cookingAptitude) {
@@ -285,7 +285,7 @@ module.exports = class Crafting {
             throw "Your level has to be an integer between 0 and 500, inclusive. Try again."
         }
         this._cookingAptitude = cookingAptitude
-        characters.setAttribute(this.id, "cookingAptitude", this.cookingAptitude)
+        craftings.setAttribute(this.id, "cookingAptitude", this.cookingAptitude)
     }
 
     set furnishing(furnishing) {
@@ -301,7 +301,7 @@ module.exports = class Crafting {
             throw "Your level has to be an integer between 1 and 200, inclusive. Try again."
         }
         this._furnishing = furnishing
-        characters.setAttribute(this.id, "furnishing", this.furnishing)
+        craftings.setAttribute(this.id, "furnishing", this.furnishing)
     }
 
     set furnishingAptitude(furnishingAptitude) {
@@ -317,7 +317,7 @@ module.exports = class Crafting {
             throw "Your level has to be an integer between 0 and 500, inclusive. Try again."
         }
         this._furnishingAptitude = furnishingAptitude
-        characters.setAttribute(this.id, "furnishingAptitude", this.furnishingAptitude)
+        craftings.setAttribute(this.id, "furnishingAptitude", this.furnishingAptitude)
     }
 
 
