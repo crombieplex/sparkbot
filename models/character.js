@@ -272,10 +272,10 @@ module.exports = class Character {
     get embed() {
         let embed = new MessageEmbed()
             .setTitle(this._name).setColor("#DAA520")
-        embed.addField("Company", this._company || "None", true)
-        embed.addField("Faction", this._faction || "None", true)
+        embed.addField("Company", this._company || "None", false)
+        embed.addField("Faction", this._faction || "None", false)
         if (this._level && this._level > 0) {
-            embed.addField("Level", "" + this._level, false)
+            embed.addField("Level", "" + this._level, true)
         } else {
             embed.addField("Level", "?", true)
         }
@@ -286,7 +286,7 @@ module.exports = class Character {
         }
         embed.addField("Weapon 1", this._primaryWeapon || "?", false)
         embed.addField("Weapon 2", this._secondaryWeapon || "?", false)
-        embed.addField("Weight", this._weight || "?", true)
+        embed.addField("Weight", this._weight || "?", false)
         embed.addField("DPS", this._dps || "?", false)
         if (this._notes) {
             embed.addField("Notes", this._notes, false)
