@@ -3,7 +3,7 @@ const logger = require('../lib/logger')
 const { MessageEmbed } = require('discord.js')
 
 module.exports = class Character {
-    constructor(id, name = null, company = null, level = null, gearscore = null, primaryWeapon = null, secondaryWeapon = null, weight = null, faction = null, notes = null) {
+    constructor(id, name = null, company = null, level = null, gearscore = null, primaryWeapon = null, secondaryWeapon = null, weight = null, dps = null, faction = null, notes = null) {
         this.id = id
         this._name = name
         this._company = company
