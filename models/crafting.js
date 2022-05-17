@@ -344,6 +344,7 @@ module.exports = class Crafting {
         } else {
             embed.addField("Engineering", "?", true)
             embed.addField("Aptitude", "?", true)
+          }
         if (this._jewelcrafting && this._jewelcrafting > 0 && this._jewelcraftingAptitude && this._jewelcraftingAptitude > 0) {
             embed.addField("Jewelcrafting", "" + this._jewelcrafting, true)
             embed.addField("Aptitude", "" + this._jewelcraftingAptitude, true)
