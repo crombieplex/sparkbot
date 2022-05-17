@@ -286,7 +286,7 @@ module.exports = class Character {
         }
         embed.addField("Weapon 1", this._primaryWeapon || "?", false)
         embed.addField("Weapon 2", this._secondaryWeapon || "?", false)
-        embed.addField("Weight", this._weight || "?", false)
+        embed.addField("Weight", this._weight || "?", true)
         embed.addField("DPS", this._dps || "?", false)
         if (this._notes) {
             embed.addField("Notes", this._notes, false)
