@@ -243,7 +243,7 @@ module.exports = class Character {
     }
 
     set faction(faction) {
-        if (faction != "Covenant" && faction != "Marauders" && faction != "Syndicate") {
+        if (faction != "covenant" && faction != "marauders" && faction != "syndicate") {
             logger.warn(`Rejected input "faction" attribute value "${faction}" for user ${this.id}.`)
             throw 'Whatever you said was not one of the options I listed. Again, your options are "Covenant", "Marauders", "Syndicate".'
 
