@@ -332,7 +332,7 @@ module.exports = class Crafting {
             embed.addField("Aptitude", "?", true)
         }
         if (this._armoring && this._armoring > 0 && this._armoringAptitude && this._armoringAptitude > 0) {
-            embed.addField("Armoring", "" + this._armoring, false)
+            embed.addField("Armoring", "" + this._armoring, true)
             embed.addField("Aptitude", "" + this._armoringAptitude, true)
         } else {
             embed.addField("Armoring", "?", true)
